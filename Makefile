@@ -3,13 +3,13 @@ CC = g++ -g
 
 CCFLAGS = -Wall -O4 -ansi -pedantic
 SRCS = src/*
-BIN = bin/Test.exe
+BIN = bin/Test
 LIBS = lib/*
 ifeq ($(OS),Windows_NT)
     CCFLAGS += -D WIN32
-
-
+		BIN := $(BIN).exe
 else
+		BIN := $(BIN).out
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
         CCFLAGS += -D LINUX -lpthread
@@ -28,3 +28,6 @@ all:
 
 clean:
 	[ -d "bin" ] && echo "Cleaning bin"; rm bin/*;
+
+run:
+	./$(BIN)
