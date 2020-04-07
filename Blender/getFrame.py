@@ -1,22 +1,20 @@
 import os
 import bpy
-import threading
 import sys
 
-for window in bpy.context.window_manager.windows:
-    screen = window.screen
 
 
 argv = sys.argv
 argv = argv[argv.index("--") + 1:]
 
+#argv format is as follows [Car X Position, Car Y Position, Car Rotation]
 
 Cameras = ['Camera_Center', 'Camera_Left', 'Camera_Right']
 
 filepath = bpy.data.filepath
 exportPath = os.path.dirname(filepath) + "/CameraData/"
 
-Car = o = bpy.data.objects["Car"]
+Car = bpy.data.objects["Car"]
 
 Car.location = [float(argv[0]), float(argv[1]), 0.5];
 Car.rotation_euler = [0, 0, float(argv[2])]
@@ -33,5 +31,3 @@ for camera in Cameras:
     scn.render.image_settings.file_format = 'PNG'
     bpy.ops.render.render(write_still = 1)
     pass
-
-bpy.ops.wm.quit_blender()

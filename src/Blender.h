@@ -6,7 +6,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
+#ifdef __APPLE__
 #define BLENDER_EXEC_PATH ("/Applications/Blender.app/Contents/MacOS/Blender")
+#endif
 #define BLEND_FILE_PATH ("Blender/Example\\ Map.blend")
 #define PYTHON_SCRIPT_PATH ("Blender/getFrame.py")
 
