@@ -1,8 +1,9 @@
 cc = gcc -g
 CC = g++ -g
 
-CCFLAGS = -Wall -O4 -ansi -pedantic
-SRCS = src/*
+CCFLAGS = -Wall -O3 -ansi -pedantic
+LLFLAGS = -Wall -O3
+SRCS = src/*.cpp
 BIN = bin/Test
 LIBS = lib/*
 ifeq ($(OS),Windows_NT)
@@ -12,10 +13,12 @@ else
 		BIN := $(BIN).out
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
-        CCFLAGS += -D LINUX -lpthread
+        CCFLAGS += -D LINUX
+				LLFLAGS = -lpthread
     endif
     ifeq ($(UNAME_S),Darwin)
-        CCFLAGS += -D OSX -lpthread
+        CCFLAGS += -D OSX
+				LLFLAGS = -lpthread
     endif
 endif
 
@@ -24,7 +27,7 @@ all:
 	[ -d "lib" ] && echo "Directory lib Exists" || mkdir lib
 	$(CC) -c $(CCFLAGS) $(SRCS)
 	mv *.o lib
-	$(CC) $(CCFLAGS) $(LIBS) -o $(BIN)
+	$(CC) $(LLFLAGS) $(LIBS) -o $(BIN)
 
 clean:
 	[ -d "bin" ] && echo "Cleaning bin"; rm bin/*;
