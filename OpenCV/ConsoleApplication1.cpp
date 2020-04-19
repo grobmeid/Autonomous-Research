@@ -1,7 +1,7 @@
 /*
  *
  *	Author:			Drew Grobmeier
- *		Credit:			Sam Siewert, OpenCV Team
+ *	Credit:			Sam Siewert, OpenCV Team
  *	Purpose:		To outline boxes and show next arrow
  *	Date:			4/19/2020
  *	Version:		V2
