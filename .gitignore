@@ -1,4 +1,5 @@
 
 bin/*
 *.DS_Store
-*.blend1
+
+BlenderEXEC/*

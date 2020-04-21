@@ -18,10 +18,15 @@ int captureImages(double xPosition, double yPosition, double rotation) {
     }
   *************************************************/
     char callString[316];
-    int strlen = sprintf(callString, "%s -b %s -P %s -- %f %f %f", BLENDER_EXEC_PATH, BLEND_FILE_PATH, PYTHON_SCRIPT_PATH, xPosition, yPosition, rotation);
+    int strlen = sprintf(callString, "%s -b %s", BLENDER_EXEC_PATH, BLEND_FILE_PATH);
     if (strlen < 0) {
-      /* UH OH */
+     //TODO 
     }
+
+    printf("CALL STRING\n %s \n", callString);
+    system("ls Blender");
     system(callString);
+  
     return 1;
 }
+
